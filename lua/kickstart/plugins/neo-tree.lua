@@ -11,13 +11,23 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>l', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    close_if_last_window = true,
+    event_handlers = {
+      {
+        event = 'file_opened',
+        handler = function()
+          --auto close
+          require('neo-tree').close_all()
+        end,
+      },
+    },
     filesystem = {
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ['<leader>l'] = 'close_window',
         },
       },
     },
