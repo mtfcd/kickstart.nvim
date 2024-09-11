@@ -23,7 +23,7 @@ return {
       'mfussenegger/nvim-dap',
     },
     config = function()
-      vim.g.rustaceanvim = options
+      -- vim.g.rustaceanvim = options
       vim.g.no_rust_maps = 1
     end,
   },
