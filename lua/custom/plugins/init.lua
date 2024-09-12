@@ -47,11 +47,11 @@ return {
   },
   {
     'rest-nvim/rest.nvim',
-    version = 'v1.*',
+    version = 'v3.*',
     ft = 'http',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      require('rest-nvim').setup {
+      vim.g.rest_nvim = {
         result_split_horizontal = true,
         result = {
           show_curl_command = false,
@@ -60,15 +60,17 @@ return {
           },
         },
       }
+      vim.keymap.set('n', '<leader>rr', '<cmd>Rest run<CR>', { desc = 'Run rest command' })
+      vim.keymap.set('n', '<leader>ry', '<cmd>Rest run last<CR>', { desc = 'Run last rest command' })
     end,
-    {
-      'kylechui/nvim-surround',
-      event = 'VeryLazy',
-      config = function()
-        require('nvim-surround').setup {
-          -- Configuration here, or leave empty to use defaults
-        }
-      end,
-    },
+  },
+  {
+    'kylechui/nvim-surround',
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
   },
 }
