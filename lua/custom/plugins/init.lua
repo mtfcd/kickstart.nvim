@@ -73,4 +73,5 @@ return {
       }
     end,
   },
+  'LunarVim/bigfile.nvim',
 }
