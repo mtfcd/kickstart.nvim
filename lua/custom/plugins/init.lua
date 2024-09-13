@@ -73,5 +73,21 @@ return {
       }
     end,
   },
-  'LunarVim/bigfile.nvim',
+  {
+    'LunarVim/bigfile.nvim',
+    config = function()
+      require('bigfile').setup {
+        filesize = 4,
+      }
+    end,
+  },
+  {
+    'keaising/im-select.nvim',
+    lazy = false,
+    config = function()
+      require('im_select').setup {
+        set_previous_events = {},
+      }
+    end,
+  },
 }
