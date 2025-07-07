@@ -11,13 +11,34 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>l', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    close_if_last_window = true,
+    event_handlers = {
+      {
+        event = 'file_opened',
+        handler = function()
+          --auto close
+          require('neo-tree').close_all()
+        end,
+      },
+    },
     filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = false,
+        hide_by_name = {
+          'node_modules',
+        },
+        never_show = {
+          '.DS_Store',
+          'thumbs.db',
+        },
+      },
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ['<leader>l'] = 'close_window',
         },
       },
     },
